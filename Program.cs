@@ -11,7 +11,10 @@ namespace NoughtsAndCrosses
 
         private static BoardState GetStateOfBoard(string board)
         {
-
+            switch(board)
+            {
+                case ""
+            }
         }
 
         static void Main(string[] args)
