@@ -11,10 +11,14 @@ namespace NoughtsAndCrosses
 
         private static BoardState GetStateOfBoard(string board)
         {
-            switch(board)
-            {
-                case ""
-            }
+            //switch(board)
+            //{
+            //    case board
+            //}
+
+            // if it contains XXX then crosses have won
+            // if it contains OOO then Os have won
+            // anything else means nobody has won yet
         }
 
         static void Main(string[] args)
