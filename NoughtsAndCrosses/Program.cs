@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using NoughtsAndCrosses.Utilities;
 
 namespace NoughtsAndCrosses
 {
@@ -37,7 +38,7 @@ namespace NoughtsAndCrosses
 
             Console.WriteLine("Welcome to Noughts and Crosses! Please enter the current state of your game board " +
                 "using a mixture of nine inputs of the following characters: X, O and _ (underscore for " +
-                "empty squares). For example, 'XX_OOO___'");
+                "empty squares). Team Crosses must go first. For example, 'XX_OOO___'");
 
             var arguments = args.ToList<string>();
             arguments.RemoveAt(0);

@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Collections.Generic;
 
-namespace NoughtsAndCrosses
+namespace NoughtsAndCrosses.Utilities
 {
     public class Validator
     {
@@ -16,7 +16,7 @@ namespace NoughtsAndCrosses
         {
             var message = "";
           
-            if (IsCorrectLength() && !(InputHasInvalidCharacters(_userInput)))
+            if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters(_userInput))))
             {
                 message = "Ok thanks for that lovely game board!";
             }
