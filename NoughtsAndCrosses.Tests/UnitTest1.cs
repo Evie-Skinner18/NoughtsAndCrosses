@@ -4,16 +4,24 @@ using NoughtsAndCrosses;
 namespace Tests
 {
     public class Tests
-    {
+    {       
+        private BoardChecker _boardChecker;
+
         [SetUp]
         public void Setup()
         {
+            _boardChecker = new BoardChecker()
+                
         }
 
         [Test]
-        public void Test1()
+        public void CanGetStateOfBoardWhenUserEntersXXX___O_ShouldReturn_CROSSES_WIN()
         {
-            Assert.Pass();
+            // arrange
+            var gameBoardState = 
+            // act
+
+            // assert
         }
     }
 }

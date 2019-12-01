@@ -1,18 +1,23 @@
-﻿using System;
-
-namespace NoughtsAndCrosses
+﻿namespace NoughtsAndCrosses
 {
-    partial class Program
+    public class BoardChecker
     {
-        private enum BoardState
+        public enum _boardState
         {
             NOUGHTS_WIN, CROSSES_WIN, DRAW, NOBODY_HAS_WON_YET
+        };
+
+        public string Outcome;
+
+        public BoardChecker()
+        {
+            
         }
 
-        private static BoardState GetStateOfBoard(string userBoard)
+        public _boardState GetStateOfBoard(string userBoard)
         {
             //var boardState = new BoardState();
-
+            
 
 
             //switch(board)
@@ -25,19 +30,10 @@ namespace NoughtsAndCrosses
             // anything else means nobody has won yet
             if (userBoard.Contains("XXX"))
             {
-                return BoardState.CROSSES_WIN;
+                Outcome = _boardState.CROSSES_WIN
+                return Outcome;
             }
-            return BoardState.NOBODY_HAS_WON_YET;
+            return _boardState.NOBODY_HAS_WON_YET;
         }
-
-        static void Main(string[] args)
-        {
-            Console.WriteLine(BoardState.DRAW);
-
-           // var boardState = new BoardState();
-            //boardState;
-
-        }
-
     }
 }
