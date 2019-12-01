@@ -5,23 +5,40 @@ namespace Tests
 {
     public class Tests
     {       
-        private BoardChecker _boardChecker;
+        private Validator _longInputValidator;
+        private Validator _correctLengthInputValidator;
+        private Validator _invalidCharactersValidator;
+
+
 
         [SetUp]
         public void Setup()
         {
-            _boardChecker = new BoardChecker()
+            _longInputValidator = new Validator("XXXXXXXXXX");
+            _correctLengthInputValidator = new Validator("XX__OOO__");
+            _invalidCharactersValidator = new Validator("OO__$_%_hello");
                 
         }
 
         [Test]
-        public void CanGetStateOfBoardWhenUserEntersXXX___O_ShouldReturn_CROSSES_WIN()
+        public void CanValidateLengthyUserInput_ShouldReturnYourGameBoardIsInvalidSorry()
         {
-            // arrange
-            var gameBoardState = 
-            // act
+            var inputIsCorrectLength = _longInputValidator.IsCorrectLength();
+            var inputHasIncorrectCharacters = _longInputValidator.InputHasInvalidCharacters(userInput:"XXXXXXXXXX");
+            var message = _longInputValidator.ValidateUserInput();
 
-            // assert
+            Assert.That(message, Is.Not.Null);
+            Assert.AreEqual(message, "Your game board is invalid sorry!");
         }
+
+        //[Test]
+        //public void CanGetStateOfBoardWhenUserEntersXXX___O_ShouldReturn_CROSSES_WIN()
+        //{
+        //    // arrange
+        //    var gameBoardState = _boardChecker.
+        //    // act
+
+        //    // assert
+        //}
     }
 }

@@ -33,7 +33,9 @@ namespace NoughtsAndCrosses
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Noughts and Crosses! Please enter the current state of the board using );
+            Console.WriteLine("Welcome to Noughts and Crosses! Please enter the current state of your game board " +
+                "using a mixture of nine inputs of the following characters: X, O and _ (underscore for " +
+                "empty squares). For example, 'XX_OOO___'");
             for (int i = 0; i < args.Length; i++)
             {
                 Console.WriteLine(GetStateOfBoard(args[i]));
