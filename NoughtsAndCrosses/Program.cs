@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace NoughtsAndCrosses
 {
@@ -26,19 +27,40 @@ namespace NoughtsAndCrosses
             else if (userBoard.Contains("XXX"))
             {
                 return BoardState.CROSSES_WIN;
-            }            
+            }     
             return BoardState.NOBODY_HAS_WON_YET;
         }
 
 
         static void Main(string[] args)
         {
+
             Console.WriteLine("Welcome to Noughts and Crosses! Please enter the current state of your game board " +
                 "using a mixture of nine inputs of the following characters: X, O and _ (underscore for " +
                 "empty squares). For example, 'XX_OOO___'");
+
+            var arguments = args.ToList<string>();
+            arguments.RemoveAt(0);
+            args = arguments.ToArray();
+
+
             for (int i = 0; i < args.Length; i++)
             {
-                Console.WriteLine(GetStateOfBoard(args[i]));
+                var validator = new Validator(args[i]);
+                var message = validator.ValidateUserInput();
+                Console.WriteLine(message);
+
+                if (message.Contains("sorry!"))
+                {
+                    continue;
+                }               
+                else
+                {
+                    Console.WriteLine(GetStateOfBoard(args[i]));
+                }
+
+               // Console.WriteLine(GetStateOfBoard(args[i]));
+
             }
         }
 

@@ -20,7 +20,7 @@ namespace NoughtsAndCrosses
             {
                 message = "Your board has nine inputs, great!";
             }
-            else if (InputHasInvalidCharacters(_userInput))
+            else if (!(InputHasInvalidCharacters(_userInput)))
             {
                 message = "Ok thanks for that lovely game board!";
             }
@@ -53,6 +53,6 @@ namespace NoughtsAndCrosses
 
         public bool IsInvalidCharacter(char c) => !(c.Equals('_') || c.Equals('X') || c.Equals('O'));
 
-        public bool IsCorrectLength() => _userInput.Length.Equals(9);
+        public bool IsCorrectLength() => _userInput.Trim().Length == 9;
     }
 }
