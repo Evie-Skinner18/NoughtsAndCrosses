@@ -60,8 +60,6 @@ namespace NoughtsAndCrosses
                     Console.WriteLine(GetStateOfBoard(args[i]));
                 }
 
-               // Console.WriteLine(GetStateOfBoard(args[i]));
-
             }
         }
 
