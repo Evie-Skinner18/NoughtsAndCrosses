@@ -4,13 +4,13 @@ namespace NoughtsAndCrosses
 {
     class Program
     {
-        private enum boardState
-        {
-            NOUGHTS_WIN, CROSSES_WIN, DRAW, NOBODY_HAS_WON_YET
-        }
+        
 
         private static BoardState GetStateOfBoard(string board)
         {
+            var boardState = new BoardState();
+
+
             //switch(board)
             //{
             //    case board
@@ -19,11 +19,17 @@ namespace NoughtsAndCrosses
             // if it contains XXX then crosses have won
             // if it contains OOO then Os have won
             // anything else means nobody has won yet
+            return boardState;
         }
 
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+
+            var boardState = new BoardState();
+            //boardState;
+
         }
+
     }
 }
