@@ -15,12 +15,8 @@ namespace NoughtsAndCrosses
         public string ValidateUserInput()
         {
             var message = "";
-
-            if (IsCorrectLength())
-            {
-                message = "Your board has nine inputs, great!";
-            }
-            else if (!(InputHasInvalidCharacters(_userInput)))
+          
+            if (IsCorrectLength() && !(InputHasInvalidCharacters(_userInput)))
             {
                 message = "Ok thanks for that lovely game board!";
             }
