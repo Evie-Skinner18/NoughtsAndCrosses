@@ -1,22 +1,62 @@
-﻿namespace NoughtsAndCrosses.Utilities
+﻿using System.Collections.Generic;
+
+namespace NoughtsAndCrosses.Utilities
 {
-    public static class BoardChecker
+    public class BoardChecker
     {
-        // don't know what to do with char playerPiece
-        public static int CheckForAWinner(string currentBoard)
+        private string _gameBoard { get; set; }
+        private List<string> _noughtsWinningCombinations { get; set; }
+        private List<string> _crossesWinningCombinations { get; set; }
+
+        public BoardChecker(string gameBoard)
         {
-            if (currentBoard.Contains("OOO"))
+            _gameBoard = gameBoard;
+            _noughtsWinningCombinations = new List<string>()
             {
-                return 0;
-            }
-            else if (currentBoard.Contains("XXX"))
+                "_OOO_",
+                "XOOO_",
+                "_OOOX",
+                "XOOO"
+            };
+            _crossesWinningCombinations = new List<string>()
             {
-                return 1;
-            }
-            return 3;            
+                "_XXX_",
+                "OXXX_",
+                "_XXXO",
+                "OXXX"
+            };
         }
 
-        public static bool IsADraw(string currentBoard) => currentBoard.Contains("XXX") && currentBoard.Contains("OOO");
+        // don't know what to do with char playerPiece
+        public int CheckForAWinner()
+        {
+            // initialise this to nobody's won yet because we don't know who's won yet
+            var verdict = 3;
+
+            foreach (var combination in _noughtsWinningCombinations)
+            {
+                if (_gameBoard.Contains(combination))
+                {
+                    verdict = 0;
+                    break;
+                }
+            }
+
+            foreach (var combination in _crossesWinningCombinations)
+            {
+                if(_gameBoard.Contains(combination))
+                {
+                    verdict = 1;
+                    break;
+                }
+            }
+
+            return verdict;            
+        }
+
+        public bool IsADraw() => _gameBoard.Contains("XXX") && _gameBoard.Contains("OOO");
+
+        public bool BoardIsFull() => !(_gameBoard.Contains("_"));
 
     }
 }

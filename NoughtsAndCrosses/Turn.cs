@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using NoughtsAndCrosses.Utilities;
+using System.Linq;
 
 namespace NoughtsAndCrosses
 {
@@ -7,14 +8,13 @@ namespace NoughtsAndCrosses
         private string _currentBoard { get; set; }
         private string _previousBoard { get; set; }
         private bool _playerOne { get; set; }
-        private bool _playerTwo { get; set; }
+        private BoardChecker _boardChecker { get; set; }
 
         // playerOne is X and playerTwo is O
         public Turn(string currentBoard, bool playerOne)
         {
             _currentBoard = currentBoard;
             _playerOne = playerOne;
-            _playerTwo = !playerOne;
         }
 
         public Turn(string currentBoard, string previousBoard, bool playerOne)
@@ -22,7 +22,7 @@ namespace NoughtsAndCrosses
             _currentBoard = currentBoard;
             _previousBoard = previousBoard;
             _playerOne = playerOne;
-            _playerTwo = !playerOne;
+            _boardChecker = new BoardChecker(_currentBoard);
         }
 
         public string TakeTurn()
@@ -35,9 +35,13 @@ namespace NoughtsAndCrosses
             var numberOfUnderscoresOnPreviousBoard = previousBoardCharList.Where(c => c.Equals('_')).Count();
 
             var message = "";
-
+                        
+            if (_boardChecker.BoardIsFull())
+            {
+                message = "Game over!";
+            }
             // if no of underscores is same between the two boards, you know a player has tried to override an X or O
-            if (numberOfUnderscoresOnCurrentBoard.Equals(numberOfUnderscoresOnPreviousBoard))
+            else if (numberOfUnderscoresOnCurrentBoard.Equals(numberOfUnderscoresOnPreviousBoard))
             {
                 message = "No cheating! You can only place your O or X on an empty square (underscore)";
             }
@@ -45,7 +49,7 @@ namespace NoughtsAndCrosses
             else if ((numberOfUnderscoresOnPreviousBoard - numberOfUnderscoresOnCurrentBoard) > 1)
             {
                 message = "Don't be cheeky now! You can only place one X or O on the board at a time.";
-            }
+            }            
             else
             {
                 message = "Game on...";

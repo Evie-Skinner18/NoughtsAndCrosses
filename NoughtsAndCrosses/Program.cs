@@ -6,6 +6,7 @@ namespace NoughtsAndCrosses
 {
     partial class Program
     {
+        
         private enum BoardState
         {
             NOUGHTS_WIN, CROSSES_WIN, DRAW, NOBODY_HAS_WON_YET
@@ -14,16 +15,18 @@ namespace NoughtsAndCrosses
 
         private static BoardState GetStateOfBoard(string userBoard)
         {
+            var boardChecker = new BoardChecker(userBoard);
+
            // if it contains XXX then crosses have won
             // if it contains OOO then Os have won
             // anything else means nobody has won yet
-            if (BoardChecker.IsADraw(userBoard))
+            if (boardChecker.IsADraw())
             {
                 return BoardState.DRAW;
             }          
             else
             {
-                var boardStateIndex = BoardChecker.CheckForAWinner(userBoard);
+                var boardStateIndex = boardChecker.CheckForAWinner();
                 return (BoardState)boardStateIndex;
             }
         }
