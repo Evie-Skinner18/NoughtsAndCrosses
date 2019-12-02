@@ -35,7 +35,7 @@ namespace NoughtsAndCrosses
 
         static void Main(string[] args)
         {
-
+            // leaving Main method unchanged won't work
             Console.WriteLine("Welcome to Noughts and Crosses! Please enter the current state of your game board " +
                 "using a mixture of nine inputs of the following characters: X, O and _ (underscore for " +
                 "empty squares). Team Crosses must go first. For example, 'XX_OOO___'");
