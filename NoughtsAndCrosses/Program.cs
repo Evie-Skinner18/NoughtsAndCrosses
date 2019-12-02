@@ -66,6 +66,7 @@ namespace NoughtsAndCrosses
                 {
                     var thisPlayersTurn = new Turn(args[i], args[i -1], playerOne);
                     Console.WriteLine(thisPlayersTurn.PrintMessage());
+                    Console.WriteLine(thisPlayersTurn.TakeTurn());
                     Console.WriteLine(GetStateOfBoard(args[i]));
                 }
 

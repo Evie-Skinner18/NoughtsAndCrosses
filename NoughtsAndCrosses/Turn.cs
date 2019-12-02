@@ -1,4 +1,6 @@
-﻿namespace NoughtsAndCrosses
+﻿using System.Linq;
+
+namespace NoughtsAndCrosses
 {
     public class Turn
     {
@@ -23,13 +25,28 @@
             _playerTwo = !playerOne;
         }
 
-        public int TakeTurn()
+        public string TakeTurn()
         {
-            // int returned will correspond to the int of one of the options of the enum
+            // count no of underscores: if player has correctly placed their counter on an underscore, this number will have decreased by one
+            var numberOfUnderscoresOnCurrentBoard = _currentBoard.ToList<char>().Select(c => c.Equals('_')).Count();
+            var numberOfUnderscoresOnPreviousBoard = _previousBoard.ToList<char>().Select(c => c.Equals('_')).Count();
+            var message = "";
 
-            // compare current board with previous board. HAs anyone tried to put their piece on a sqare that's already taken?
-
-
+            // if no of underscores is same between the two boards, you know a player has tried to override an X or O
+            if (numberOfUnderscoresOnCurrentBoard.Equals(numberOfUnderscoresOnPreviousBoard))
+            {
+                message = "No cheating! You can only place your O or X on an empty square (underscore)";
+            }
+            // if no of underscores has decremented by more than 1, you know someone's trying to cheat in another way
+            else if ((numberOfUnderscoresOnPreviousBoard - numberOfUnderscoresOnCurrentBoard) > 1)
+            {
+                message = "Don't be cheeky now! You can only place one X or O on the board at a time.";
+            }
+            else
+            {
+                message = "Game on...";
+            }           
+            return message;
         }
 
         public string PrintMessage()
