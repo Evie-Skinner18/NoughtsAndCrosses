@@ -2,9 +2,8 @@
 A C#.Net Core console-based noughts and crosses game
 
 ## Tools and Technologies Used
-- C#.Net Core
+- C#.Net Core 2.2
 - NUnit
-- NCrunch
 
 
 ## Game Rules

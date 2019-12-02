@@ -36,7 +36,7 @@ namespace NoughtsAndCrosses.Utilities
 
             foreach (var c in userInputList)
             {
-                inputHasInvalidCharacter = IsInvalidCharacter(c) ? true : false;
+                inputHasInvalidCharacter = !(IsValidCharacter(c)) ? true : false;
                 if (inputHasInvalidCharacter)
                 {
                     break;
@@ -47,7 +47,7 @@ namespace NoughtsAndCrosses.Utilities
             return inputHasInvalidCharacter;
         }
 
-        public bool IsInvalidCharacter(char c) => !(c.Equals('_') || c.Equals('X') || c.Equals('O'));
+        public bool IsValidCharacter(char c) => c.Equals('_') || c.Equals('X') || c.Equals('O');
 
         public bool IsCorrectLength() => _userInput.Trim().Length == 9;
     }

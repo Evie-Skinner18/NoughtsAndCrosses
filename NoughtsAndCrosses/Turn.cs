@@ -1,7 +1,7 @@
 ﻿namespace NoughtsAndCrosses
 {
-    public class BoardState
+    public class Turn
     {
-       
+
     }
 }
