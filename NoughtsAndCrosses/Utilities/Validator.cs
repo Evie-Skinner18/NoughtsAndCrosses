@@ -18,7 +18,7 @@ namespace NoughtsAndCrosses.Utilities
           
             if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters(_userInput))))
             {
-                message = "Ok thanks for that lovely game board!";
+                message = "That game board will do nicely.";
             }
             else
             {

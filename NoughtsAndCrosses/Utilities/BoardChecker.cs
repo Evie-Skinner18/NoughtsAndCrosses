@@ -2,13 +2,18 @@
 {
     public static class BoardChecker
     {
-        
-        public static string CheckForAWinner(char playerPiece, string currentBoard)
+        // don't know what to do with char playerPiece
+        public static int CheckForAWinner(string currentBoard)
         {
-            var verdict = "";
-
-            return verdict = currentBoard.Contains($"{playerPiece}{playerPiece}{playerPiece}") ?
-                $"Team {playerPiece} has won!" : "Nobody has won yet";
+            if (currentBoard.Contains("OOO"))
+            {
+                return 0;
+            }
+            else if (currentBoard.Contains("XXX"))
+            {
+                return 1;
+            }
+            return 3;            
         }
 
         public static bool IsADraw(string currentBoard) => currentBoard.Contains("XXX") && currentBoard.Contains("OOO");

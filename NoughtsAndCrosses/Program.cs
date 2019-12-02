@@ -17,19 +17,15 @@ namespace NoughtsAndCrosses
            // if it contains XXX then crosses have won
             // if it contains OOO then Os have won
             // anything else means nobody has won yet
-            if (userBoard.Contains("XXX") && userBoard.Contains("OOO"))
+            if (BoardChecker.IsADraw(userBoard))
             {
                 return BoardState.DRAW;
-            }
-            else if (userBoard.Contains("OOO"))
+            }          
+            else
             {
-                return BoardState.NOUGHTS_WIN;
+                var boardStateIndex = BoardChecker.CheckForAWinner(userBoard);
+                return (BoardState)boardStateIndex;
             }
-            else if (userBoard.Contains("XXX"))
-            {
-                return BoardState.CROSSES_WIN;
-            }     
-            return BoardState.NOBODY_HAS_WON_YET;
         }
 
 
@@ -44,6 +40,9 @@ namespace NoughtsAndCrosses
             arguments.RemoveAt(0);
             args = arguments.ToArray();
 
+            // start off with playerOne true because Crosses always go first
+            var playerOne = true;
+            var playerTwo = !playerOne;
 
             for (int i = 0; i < args.Length; i++)
             {
@@ -54,12 +53,24 @@ namespace NoughtsAndCrosses
                 if (message.Contains("sorry!"))
                 {
                     continue;
-                }               
+                }   
+                // if it's the very first turn then there is no previous board
+                else if(i == 0)
+                {
+                    var thisPlayersTurn = new Turn(args[i], playerOne);
+                    Console.WriteLine(thisPlayersTurn.PrintMessage()); 
+                    Console.WriteLine(GetStateOfBoard(args[i]));
+                }
+                // for all successive turns
                 else
                 {
+                    var thisPlayersTurn = new Turn(args[i], args[i -1], playerOne);
+                    Console.WriteLine(thisPlayersTurn.PrintMessage());
                     Console.WriteLine(GetStateOfBoard(args[i]));
                 }
 
+                // swap the players each turn
+                playerOne = !playerOne;
             }
         }
 
