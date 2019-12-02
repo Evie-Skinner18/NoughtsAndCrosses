@@ -28,8 +28,12 @@ namespace NoughtsAndCrosses
         public string TakeTurn()
         {
             // count no of underscores: if player has correctly placed their counter on an underscore, this number will have decreased by one
-            var numberOfUnderscoresOnCurrentBoard = _currentBoard.ToList<char>().Select(c => c.Equals('_')).Count();
-            var numberOfUnderscoresOnPreviousBoard = _previousBoard.ToList<char>().Select(c => c.Equals('_')).Count();
+            var currentBoardCharList = _currentBoard.ToList<char>();
+            var previousBoardCharList = _previousBoard.ToList<char>();
+
+            var numberOfUnderscoresOnCurrentBoard = currentBoardCharList.Where(c => c.Equals('_')).Count();                
+            var numberOfUnderscoresOnPreviousBoard = previousBoardCharList.Where(c => c.Equals('_')).Count();
+
             var message = "";
 
             // if no of underscores is same between the two boards, you know a player has tried to override an X or O
