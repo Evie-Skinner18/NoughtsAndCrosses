@@ -27,5 +27,7 @@
             return verdict = _currentBoard.Contains($"{playerPiece}{playerPiece}{playerPiece}") ? 
                 $"Team {playerPiece} has won!" : "Nobody has won yet";
         }
+
+        public bool IsADraw() => 
     }
 }

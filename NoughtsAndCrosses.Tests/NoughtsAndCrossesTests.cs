@@ -10,6 +10,8 @@ namespace Tests
         private Validator _correctLengthInputValidator;
         private Validator _invalidCharactersValidator;
 
+        private Turn _playerOneTurn;
+        private Turn _playerTwoTurn;
 
 
         [SetUp]
@@ -18,7 +20,7 @@ namespace Tests
             _longInputValidator = new Validator("XXXXXXXXXX");
             _correctLengthInputValidator = new Validator("XX__OOO__");
             _invalidCharactersValidator = new Validator("OO__$_%_hello");
-                
+            _playerTurn = new Turn()    
         }
 
         [Test]
@@ -64,6 +66,12 @@ namespace Tests
             Assert.AreEqual(inputHasIncorrectCharacters, true);
             Assert.That(message, Is.Not.Null);
             Assert.AreEqual(message, "Your game board is invalid sorry!");
+        }
+
+        [Test]
+        public void CanCheckForAWinner_ShouldReturnNobdoyHasWonYet()
+        {
+            
         }
 
         //[Test]
