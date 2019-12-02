@@ -17,9 +17,6 @@ namespace NoughtsAndCrosses
         {
             var boardChecker = new BoardChecker(userBoard);
 
-           // if it contains XXX then crosses have won
-            // if it contains OOO then Os have won
-            // anything else means nobody has won yet
             if (boardChecker.IsADraw())
             {
                 return BoardState.DRAW;

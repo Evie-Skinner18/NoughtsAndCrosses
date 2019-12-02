@@ -14,9 +14,9 @@ namespace NoughtsAndCrosses.Utilities
 
         public string ValidateUserInput()
         {
-            var message = "";
-          
-            if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters(_userInput))))
+            string message;
+
+            if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters())))
             {
                 message = "That game board will do nicely.";
             }
@@ -28,10 +28,9 @@ namespace NoughtsAndCrosses.Utilities
             return message;
         }
 
-        public bool InputHasInvalidCharacters(string userInput)
+        public bool InputHasInvalidCharacters()
         {
-            var userInputList = new List<char>();
-            userInputList = _userInput.ToList();
+            var userInputList = _userInput.ToList();
             var inputHasInvalidCharacter = false;
 
             foreach (var c in userInputList)

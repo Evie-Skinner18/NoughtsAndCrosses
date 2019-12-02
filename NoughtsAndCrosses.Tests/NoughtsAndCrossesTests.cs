@@ -1,6 +1,5 @@
 using NUnit.Framework;
 using NoughtsAndCrosses;
-using NoughtsAndCrosses.Utilities;
 
 namespace Tests
 {
@@ -22,7 +21,7 @@ namespace Tests
             _anotherPlayerOneTurn = new Turn("XO_XXX___", "XO_OXX___", true);
             // player two has cheekily placed two Os in one go
             _anotherPlayerTwoTurn = new Turn("X_OO_____", "X________", false);
-        }     
+        }
 
         [Test]
         public void CanDetectAPlayerTryingToOverwriteTheOtherPlayersTurn_ShouldReturn_MessageAboutTheUnderscores()
@@ -53,21 +52,6 @@ namespace Tests
 
             Assert.AreEqual(playerOneGameOnMessage, "Game on...");
             Assert.AreEqual(playerTwoGameOnMessage, "Game on...");
-        }
-        //[Test]
-        //public void CanCheckForAWinner_ShouldReturnNobodyHasWonYet()
-        //{
-
-        //}
-
-        //[Test]
-        //public void CanGetStateOfBoardWhenUserEntersXXX___O_ShouldReturn_CROSSES_WIN()
-        //{
-        //    // arrange
-        //    var gameBoardState = _boardChecker.
-        //    // act
-
-        //    // assert
-        //}
+        }               
     }
 }

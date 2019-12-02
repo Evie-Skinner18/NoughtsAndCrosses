@@ -23,7 +23,7 @@ namespace Tests
         public void CanValidateLengthyUserInput_ShouldReturnYourGameBoardIsInvalidSorry()
         {
             var inputIsCorrectLength = _longInputValidator.IsCorrectLength();
-            var inputHasIncorrectCharacters = _longInputValidator.InputHasInvalidCharacters(userInput: "XXXXXXXXXX");
+            var inputHasIncorrectCharacters = _longInputValidator.InputHasInvalidCharacters();
             var message = _longInputValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);
@@ -35,10 +35,10 @@ namespace Tests
         }
 
         [Test]
-        public void CanValidateCorrectUserInput_ShouldReturnOkThanksForThatLovelyGameBoard()
+        public void CanValidateCorrectUserInput_ShouldReturnThatGameBoardWillDoNicely()
         {
             var inputIsCorrectLength = _correctLengthInputValidator.IsCorrectLength();
-            var inputHasIncorrectCharacters = _correctLengthInputValidator.InputHasInvalidCharacters(userInput: "XX__OOO__");
+            var inputHasIncorrectCharacters = _correctLengthInputValidator.InputHasInvalidCharacters();
             var message = _correctLengthInputValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);
@@ -46,14 +46,14 @@ namespace Tests
             Assert.That(inputHasIncorrectCharacters, Is.Not.Null);
             Assert.AreEqual(inputHasIncorrectCharacters, false);
             Assert.That(message, Is.Not.Null);
-            Assert.AreEqual(message, "Ok thanks for that lovely game board!");
+            Assert.AreEqual(message, "That game board will do nicely.");
         }
 
         [Test]
         public void CanValidateInvalidCharactersUserInput_ShouldReturnYourGameBoardIsInvalidSorry()
         {
             var inputIsCorrectLength = _invalidCharactersValidator.IsCorrectLength();
-            var inputHasIncorrectCharacters = _invalidCharactersValidator.InputHasInvalidCharacters(userInput: "OO__$_%_hello");
+            var inputHasIncorrectCharacters = _invalidCharactersValidator.InputHasInvalidCharacters();
             var message = _invalidCharactersValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);

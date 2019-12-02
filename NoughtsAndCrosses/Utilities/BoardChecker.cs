@@ -27,7 +27,6 @@ namespace NoughtsAndCrosses.Utilities
             };
         }
 
-        // don't know what to do with char playerPiece
         public int CheckForAWinner()
         {
             // initialise this to nobody's won yet because we don't know who's won yet
