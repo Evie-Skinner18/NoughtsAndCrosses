@@ -18,3 +18,4 @@ code tightly coupled.
 things I struggled with the most.
 - Make the game more interactive by taking the user's input in Console.ReadLine() statements instead of from arguments 
 in the Main() method.
+- Work out why .Net Core 3 didn't work. Ideally I want to use the most up-to-date version!
