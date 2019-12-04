@@ -18,11 +18,15 @@ namespace NoughtsAndCrosses.Utilities
 
             if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters())))
             {
-                message = "That game board will do nicely.";
+                message = "Valid";
+            }
+            else if (_userInput.Trim().Equals("Program.cs"))
+            {
+                message = "";
             }
             else
             {
-                message = "Your game board is invalid sorry!";
+                message = "Invalid";
             }
 
             return message;

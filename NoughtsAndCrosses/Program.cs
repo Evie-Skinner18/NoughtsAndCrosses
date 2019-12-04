@@ -19,7 +19,7 @@ namespace NoughtsAndCrosses
             // first check if it's a valid board
             // want the validator to return an int 4 if oard is invalid this  return (BoardState)boardStateIndex;
             // if board is valid return 5 or something
-            var validator = new Validator(args[i]);
+            var validator = new Validator(userBoard);
             var message = validator.ValidateUserInput();
 
             // if board is valid, then we can check for draw, wins etc
@@ -31,8 +31,8 @@ namespace NoughtsAndCrosses
             }          
             else
             {
-
-                var boardStateIndex = boardChecker.CheckForAWinner();
+                var winnerMessage = boardChecker.CheckForAWinner();
+                var boardStateIndex = boardChecker.GetIndexOfWinner(winnerMessage);
                 return (BoardState)boardStateIndex;
             }
         }

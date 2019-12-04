@@ -37,6 +37,7 @@ namespace NoughtsAndCrosses.Utilities
             };            
         }
 
+        // if no draw, check for winner
         public string CheckForAWinner()
         {
             var message = "";
@@ -57,26 +58,15 @@ namespace NoughtsAndCrosses.Utilities
             return message;
         }
 
-        public int CheckBoardState(string message)
-        {
-            // initialise this to nobody's won yet because we don't know who's won yet
-            var verdict = 3;
-
+        // if it's not a draw we can get an index corresponding to the winner which we can use in Program.cs for relevant BoardState
+        public int GetIndexOfWinner(string message)
+        {         
             switch(message)
             {
-                // 0 for noughts 
                 case "Noughts": return 0;
                 case "Crosses": return 1;
-                default: break;                
-            }
-            cas
-
-            // 1 for crosses
-
-            //  2 draw
-
-            // 3 nobody
-            
+                default: return 3;                
+            }       
         }
 
        public bool HasWon(char playerPiece)
@@ -102,9 +92,8 @@ namespace NoughtsAndCrosses.Utilities
         }
         
         public bool BoardIsFull() => !(_gameBoard.Contains('_'));
+
         // it's a draw if the board is full with no winner
         public bool IsADraw() => BoardIsFull() && (HasWon('O').Equals(false) && HasWon('X').Equals(false));
-
-
     }
 }
