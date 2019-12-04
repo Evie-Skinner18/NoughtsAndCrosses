@@ -12,44 +12,42 @@ namespace NoughtsAndCrosses
             NOUGHTS_WIN, CROSSES_WIN, DRAW, NOBODY_HAS_WON_YET, BOARD_IS_INVALID
         }
 
-
         private static BoardState GetStateOfBoard(string userBoard)
         {
             var boardChecker = new BoardChecker(userBoard);
-            // first check if it's a valid board
-            // want the validator to return an int 4 if oard is invalid this  return (BoardState)boardStateIndex;
-            // if board is valid return 5 or something
             var validator = new Validator(userBoard);
-            var message = validator.ValidateUserInput();
+            var validationBoardStateIndex = validator.ValidateUserInput();
 
             // if board is valid, then we can check for draw, wins etc
-            
-
-            if (boardChecker.IsADraw())
+            if (validationBoardStateIndex.Equals(5))
             {
-                return BoardState.DRAW;
-            }          
+                if (boardChecker.IsADraw())
+                {
+                    return BoardState.DRAW;
+                }
+                else
+                {
+                    var winnerMessage = boardChecker.CheckForAWinner();
+                    var boardStateIndex = boardChecker.GetIndexOfWinner(winnerMessage);
+                    return (BoardState)boardStateIndex;
+                }
+            }
             else
             {
-                var winnerMessage = boardChecker.CheckForAWinner();
-                var boardStateIndex = boardChecker.GetIndexOfWinner(winnerMessage);
-                return (BoardState)boardStateIndex;
-            }
+                return (BoardState)validationBoardStateIndex;
+            }            
         }
 
 
         static void Main(string[] args)
         {
-            //var arguments = args.ToList<string>();
-            //arguments.RemoveAt(0);
-            //args = arguments.ToArray();
 
-            
+            //for (int i = 0; i < args.Length; i++)
+            //{   
+            //   Console.WriteLine(GetStateOfBoard(args[i]));                
+            //}
 
-            for (int i = 0; i < args.Length; i++)
-            {   
-               Console.WriteLine(GetStateOfBoard(args[i]));                
-            }
+            GetStateOfBoard("XXXOO____");
         }
 
     }

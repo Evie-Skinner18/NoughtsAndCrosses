@@ -15,5 +15,12 @@ namespace Tests
         {
             
         }
+
+
+        [Test]
+        public void CanGetBoardState_ShouldReturn_NOUGHTS_WIN()
+        {
+
+        }
     }
 }
