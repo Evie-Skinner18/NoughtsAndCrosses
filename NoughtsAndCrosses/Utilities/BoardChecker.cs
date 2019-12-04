@@ -43,26 +43,33 @@ namespace NoughtsAndCrosses.Utilities
 
             if (HasWon('O'))
             {
-                message = "Noughts have won!";
+                message = "Noughts";
             }
             else if (HasWon('X'))
             {
-                message = "Crosses have won!";
+                message = "Crosses";
             }
             else
             {
-                message = "Nobody has won yet";
+                message = "Nobody";
             }
 
             return message;
         }
 
-        public int CheckBoardState()
+        public int CheckBoardState(string message)
         {
             // initialise this to nobody's won yet because we don't know who's won yet
             var verdict = 3;
 
-            // 0 for noughts 
+            switch(message)
+            {
+                // 0 for noughts 
+                case "Noughts": return 0;
+                case "Crosses": return 1;
+                default: break;                
+            }
+            cas
 
             // 1 for crosses
 
@@ -93,10 +100,11 @@ namespace NoughtsAndCrosses.Utilities
 
             return someoneHasWon;
         }
+        
+        public bool BoardIsFull() => !(_gameBoard.Contains('_'));
+        // it's a draw if the board is full with no winner
+        public bool IsADraw() => BoardIsFull() && (HasWon('O').Equals(false) && HasWon('X').Equals(false));
 
-        public bool IsADraw() => _gameBoard.Contains("XXX") && _gameBoard.Contains("OOO");
-
-        public bool BoardIsFull() => !(_gameBoard.Contains("_"));
 
     }
 }
