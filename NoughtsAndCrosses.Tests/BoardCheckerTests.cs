@@ -22,7 +22,46 @@ namespace Tests
         [Test]
         public void CanCheckIfNoughtsHaveWon_ShouldReturnFalse()
         {
-            //_noWinnerBoardChecker
+            var verdict = _noWinnerBoardChecker.HasWon('O');
+
+            Assert.That(verdict, Is.Not.Null);
+            Assert.AreEqual(verdict, false);
+        }
+
+        [Test]
+        public void CanCheckIfNoughtsHaveWon_ShouldReturnTrue()
+        {
+            var verdict = _noughtsWinnerBoardChecker.HasWon('O');
+
+            Assert.That(verdict, Is.Not.Null);
+            Assert.AreEqual(verdict, true);
+        }
+
+        [Test]
+        public void CanCheckIfCrossesHaveWon_ShouldReturnFalse()
+        {
+            var verdict = _noughtsWinnerBoardChecker.HasWon('X');
+
+            Assert.That(verdict, Is.Not.Null);
+            Assert.AreEqual(verdict, false);
+        }
+
+        [Test]
+        public void CanCheckIfCrossesHaveWon_ShouldReturnTrue()
+        {
+            var verdict = _crossesWinnerBoardChecker.HasWon('X');
+
+            Assert.That(verdict, Is.Not.Null);
+            Assert.AreEqual(verdict, true);
+        }
+
+        [Test]
+        public void CanCheckIfCrossesHaveWonOnADrawBoard_ShouldReturnFalse()
+        {
+            var verdict = _drawBoardChecker.HasWon('X');
+
+            Assert.That(verdict, Is.Not.Null);
+            Assert.AreEqual(verdict, false);
         }
 
         [Test]
