@@ -37,11 +37,44 @@ namespace NoughtsAndCrosses.Utilities
             };            
         }
 
-        public int CheckForAWinner(char playerPiece)
+        public string CheckForAWinner()
+        {
+            var message = "";
+
+            if (HasWon('O'))
+            {
+                message = "Noughts have won!";
+            }
+            else if (HasWon('X'))
+            {
+                message = "Crosses have won!";
+            }
+            else
+            {
+                message = "Nobody has won yet";
+            }
+
+            return message;
+        }
+
+        public int CheckBoardState()
         {
             // initialise this to nobody's won yet because we don't know who's won yet
             var verdict = 3;
-            var hasWon = false;
+
+            // 0 for noughts 
+
+            // 1 for crosses
+
+            //  2 draw
+
+            // 3 nobody
+            
+        }
+
+       public bool HasWon(char playerPiece)
+        {
+            var someoneHasWon = false;
             var boxIndicesContainingThisPiece = new List<int>();
 
             for (int i = 0; i < _gameBoard.Count(); i++)
@@ -54,33 +87,11 @@ namespace NoughtsAndCrosses.Utilities
 
             foreach (var combination in _winningCombinations)
             {
-                hasWon = combination.Except(boxIndicesContainingThisPiece).Equals(0);
+                // if the same three box indices taken correspond to a winning combination, we have a winner!
+                someoneHasWon = combination.Except(boxIndicesContainingThisPiece).Equals(0);
             }
 
-            foreach (var combination in _winningCombinations)
-            {
-                if (_gameBoard.Contains(combination))
-                {
-                    verdict = 0;
-                    break;
-                }
-            }
-
-            foreach (var combination in _crossesWinningCombinations)
-            {
-                if(_gameBoard.Contains(combination))
-                {
-                    verdict = 1;
-                    break;
-                }
-            }
-
-            return verdict;            
-        }
-
-        public int DecideWhoHasWon()
-        {
-
+            return someoneHasWon;
         }
 
         public bool IsADraw() => _gameBoard.Contains("XXX") && _gameBoard.Contains("OOO");

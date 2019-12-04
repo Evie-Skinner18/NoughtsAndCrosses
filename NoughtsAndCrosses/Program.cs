@@ -17,10 +17,13 @@ namespace NoughtsAndCrosses
         {
             var boardChecker = new BoardChecker(userBoard);
             // first check if it's a valid board
-            // want the validator to return an int like this  return (BoardState)boardStateIndex;
+            // want the validator to return an int 4 if oard is invalid this  return (BoardState)boardStateIndex;
+            // if board is valid return 5 or something
             var validator = new Validator(args[i]);
             var message = validator.ValidateUserInput();
 
+            // if board is valid, then we can check for draw, wins etc
+            
 
             if (boardChecker.IsADraw())
             {
@@ -37,9 +40,9 @@ namespace NoughtsAndCrosses
 
         static void Main(string[] args)
         {
-            var arguments = args.ToList<string>();
-            arguments.RemoveAt(0);
-            args = arguments.ToArray();
+            //var arguments = args.ToList<string>();
+            //arguments.RemoveAt(0);
+            //args = arguments.ToArray();
 
             
 
