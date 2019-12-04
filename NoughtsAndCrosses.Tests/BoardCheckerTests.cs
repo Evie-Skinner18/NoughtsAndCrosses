@@ -9,47 +9,68 @@ namespace Tests
         private BoardChecker _noughtsWinnerBoardChecker;
         private BoardChecker _crossesWinnerBoardChecker;
         private BoardChecker _drawBoardChecker;
-        private BoardChecker _gameOverBoardChecker;
 
         [SetUp]
         public void Setup()
         {
-            _noWinnerBoardChecker = new BoardChecker("XXXXXXXXX");
+            _noWinnerBoardChecker = new BoardChecker("XOXOXO___");
             _noughtsWinnerBoardChecker = new BoardChecker("X_OXOXOOO");
             _crossesWinnerBoardChecker = new BoardChecker("XO_XXXO_O");
-            _drawBoardChecker = new BoardChecker("X_OXXXOOO");
-            _gameOverBoardChecker = new BoardChecker("XOXOXOXXX");
+            _drawBoardChecker = new BoardChecker("XOOOXXXXO");
         }
 
+        [Test]
+        public void CanCheckIfNoughtsHaveWon_ShouldReturnFalse()
+        {
+            //_noWinnerBoardChecker
+        }
 
         [Test]
-        public void CanCheckForAWinner_ShouldReturn_3()
+        public void CanCheckForAWinner_ShouldReturn_Nobody()
         {
             // 3 = nobody has won yet
             var verdict = _noWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
-            Assert.AreEqual(verdict, 3);
+            Assert.AreEqual(verdict, "Nobody");
         }
 
         [Test]
-        public void CanCheckForAWinner_ShouldReturn_0()
+        public void CanCheckForAWinner_ShouldReturn_Noughts()
         {
             // 0 = noughts have won
             var verdict = _noughtsWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
-            Assert.AreEqual(verdict, 0);
+            Assert.AreEqual(verdict, "Noughts");
         }
 
         [Test]
-        public void CanCheckForAWinner_ShouldReturn_1()
+        public void CanCheckForAWinner_ShouldReturn_Crosses()
         {
             // 1 = crosses have won
             var verdict = _crossesWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
-            Assert.AreEqual(verdict, 1);
+            Assert.AreEqual(verdict, "Crosses");
+        }        
+
+        [Test]
+        public void CanGetIndexOfWinner_ShouldReturn_0()
+        {
+
+        }
+
+        [Test]
+        public void CanGetIndexOfWinner_ShouldReturn_1()
+        {
+
+        }
+
+        [Test]
+        public void CanGetIndexOfWinner_ShouldReturn_3()
+        {
+
         }
 
         [Test]
@@ -67,7 +88,7 @@ namespace Tests
         public void CanCheckIfBoardIsFull_ShouldReturnTrue()
         {
             // true = full
-            var verdict = _gameOverBoardChecker.BoardIsFull();
+            var verdict = _drawBoardChecker.BoardIsFull();
 
             Assert.That(verdict, Is.Not.Null);
             Assert.AreEqual(verdict, true);
