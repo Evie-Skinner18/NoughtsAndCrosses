@@ -56,12 +56,30 @@ namespace Tests
         }
 
         [Test]
-        public void CanGetBoardState_ShouldReturn_NOUGHTS_WIN()
+        public void CanGetBoardState_ShouldReturn_DRAW()
         {
-            var noughtsMessage = GetStateOfBoard("XX_OOOX__");
+            var noughtsMessage = GetStateOfBoard("XOOOXXXXO");
 
             Assert.That(noughtsMessage, Is.Not.Null);
-            Assert.AreEqual(noughtsMessage, BoardState.NOUGHTS_WIN);
+            Assert.AreEqual(noughtsMessage, BoardState.DRAW);
+        }
+
+        [Test]
+        public void CanGetBoardState_ShouldReturn_NOBODY_HAS_WON_YET()
+        {
+            var noughtsMessage = GetStateOfBoard("XX__OOX__");
+
+            Assert.That(noughtsMessage, Is.Not.Null);
+            Assert.AreEqual(noughtsMessage, BoardState.NOBODY_HAS_WON_YET);
+        }
+
+        [Test]
+        public void CanGetBoardState_ShouldReturn_BOARD_IS_INVALID()
+        {
+            var noughtsMessage = GetStateOfBoard("OX__X____");
+
+            Assert.That(noughtsMessage, Is.Not.Null);
+            Assert.AreEqual(noughtsMessage, BoardState.BOARD_IS_INVALID);
         }
     }
 }

@@ -5,7 +5,7 @@ using NoughtsAndCrosses.Utilities;
 namespace NoughtsAndCrosses
 {
     partial class Program
-    {
+    {        
         
         private enum BoardState
         {
