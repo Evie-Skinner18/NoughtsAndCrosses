@@ -1,5 +1,4 @@
 ﻿using System.Linq;
-using System.Collections.Generic;
 
 namespace NoughtsAndCrosses.Utilities
 {
@@ -12,20 +11,10 @@ namespace NoughtsAndCrosses.Utilities
             _userInput = userInput;
         }
 
-        public string ValidateUserInput()
+        public int ValidateUserInput()
         {
-            string message;
-
-            if ((IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters())))
-            {
-                message = "That game board will do nicely.";
-            }
-            else
-            {
-                message = "Your game board is invalid sorry!";
-            }
-
-            return message;
+            // 5 valid board and 4 for INvalid
+            return (IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters())) ? 5 : 4;
         }
 
         public bool InputHasInvalidCharacters()

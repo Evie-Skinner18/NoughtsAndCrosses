@@ -18,50 +18,50 @@ namespace Tests
             _invalidCharactersValidator = new Validator("OO__$_%_hello");
         }
 
-
+        // 5 valid board and 4 for INvalid
         [Test]
-        public void CanValidateLengthyUserInput_ShouldReturnYourGameBoardIsInvalidSorry()
+        public void CanValidateLengthyUserInput_ShouldReturn_4()
         {
             var inputIsCorrectLength = _longInputValidator.IsCorrectLength();
             var inputHasIncorrectCharacters = _longInputValidator.InputHasInvalidCharacters();
-            var message = _longInputValidator.ValidateUserInput();
+            var validationIndex = _longInputValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);
             Assert.AreEqual(inputIsCorrectLength, false);
             Assert.That(inputHasIncorrectCharacters, Is.Not.Null);
             Assert.AreEqual(inputHasIncorrectCharacters, false);
-            Assert.That(message, Is.Not.Null);
-            Assert.AreEqual(message, "Your game board is invalid sorry!");
+            Assert.That(validationIndex, Is.Not.Null);
+            Assert.AreEqual(validationIndex, 4);
         }
 
         [Test]
-        public void CanValidateCorrectUserInput_ShouldReturnThatGameBoardWillDoNicely()
+        public void CanValidateCorrectUserInput_ShouldReturn_5()
         {
             var inputIsCorrectLength = _correctLengthInputValidator.IsCorrectLength();
             var inputHasIncorrectCharacters = _correctLengthInputValidator.InputHasInvalidCharacters();
-            var message = _correctLengthInputValidator.ValidateUserInput();
+            var validationIndex = _correctLengthInputValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);
             Assert.AreEqual(inputIsCorrectLength, true);
             Assert.That(inputHasIncorrectCharacters, Is.Not.Null);
             Assert.AreEqual(inputHasIncorrectCharacters, false);
-            Assert.That(message, Is.Not.Null);
-            Assert.AreEqual(message, "That game board will do nicely.");
+            Assert.That(validationIndex, Is.Not.Null);
+            Assert.AreEqual(validationIndex, 5);
         }
 
         [Test]
-        public void CanValidateInvalidCharactersUserInput_ShouldReturnYourGameBoardIsInvalidSorry()
+        public void CanValidateInvalidCharactersUserInput_ShouldReturn_4()
         {
             var inputIsCorrectLength = _invalidCharactersValidator.IsCorrectLength();
             var inputHasIncorrectCharacters = _invalidCharactersValidator.InputHasInvalidCharacters();
-            var message = _invalidCharactersValidator.ValidateUserInput();
+            var validationIndex = _invalidCharactersValidator.ValidateUserInput();
 
             Assert.That(inputIsCorrectLength, Is.Not.Null);
             Assert.AreEqual(inputIsCorrectLength, false);
             Assert.That(inputHasIncorrectCharacters, Is.Not.Null);
             Assert.AreEqual(inputHasIncorrectCharacters, true);
-            Assert.That(message, Is.Not.Null);
-            Assert.AreEqual(message, "Your game board is invalid sorry!");
+            Assert.That(validationIndex, Is.Not.Null);
+            Assert.AreEqual(validationIndex, 4);
         }
     }
 }

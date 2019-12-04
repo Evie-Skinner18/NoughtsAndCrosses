@@ -12,10 +12,8 @@ A C#.Net Core console-based noughts and crosses game
 - The game ends as soon as a player either gets three in a row, or or there are no empty slots left.
 
 ## In a future iteration of this project, I would...
-- Learn how to apply the use of interfaces, since there are classes that depend on concrete classes, which makes the 
-code tightly coupled.
-- Spend more time working out how to solve the challenge without changing the Main() method: this was one of the 
-things I struggled with the most.
-- Make the game more interactive by taking the user's input in Console.ReadLine() statements instead of from arguments 
-in the Main() method.
+- Learn how to test the GetStateOfBoard() method without repeating it. I'm pretty sure I could do this by having the method in a 
+separate, publicly-accessible class.
+- Come up with a more clever and concise way of checking for a winner. I have noticed a pattern in the indices of the winning 
+combinations so it would probably involve using this pattern.
 - Work out why .Net Core 3 didn't work. Ideally I want to use the most up-to-date version!
