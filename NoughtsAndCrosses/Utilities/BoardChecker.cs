@@ -85,7 +85,12 @@ namespace NoughtsAndCrosses.Utilities
             foreach (var combination in _winningCombinations)
             {
                 // if the same three box indices taken correspond to a winning combination, we have a winner!
-                someoneHasWon = combination.Except(boxIndicesContainingThisPiece).Equals(0);
+                someoneHasWon = combination.Except(boxIndicesContainingThisPiece).Count().Equals(0);
+
+                if (someoneHasWon)
+                {
+                    break;
+                }
             }
 
             return someoneHasWon;

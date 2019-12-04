@@ -42,12 +42,12 @@ namespace NoughtsAndCrosses
         static void Main(string[] args)
         {
 
-            //for (int i = 0; i < args.Length; i++)
-            //{   
-            //   Console.WriteLine(GetStateOfBoard(args[i]));                
-            //}
+            for (int i = 0; i < args.Length; i++)
+            {
+                Console.WriteLine(GetStateOfBoard(args[i]));
+            }
 
-            GetStateOfBoard("XXXOO____");
+            //GetStateOfBoard("XXXOO____");
         }
 
     }
