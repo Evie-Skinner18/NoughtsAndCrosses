@@ -1,38 +1,63 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace NoughtsAndCrosses.Utilities
 {
     public class BoardChecker
     {
-        private string _gameBoard { get; set; }
-        private List<string> _noughtsWinningCombinations { get; set; }
-        private List<string> _crossesWinningCombinations { get; set; }
+        private List<char> _gameBoard { get; set; }
+        private List<List<int>> _winningCombinations { get; set; }
 
         public BoardChecker(string gameBoard)
         {
-            _gameBoard = gameBoard;
-            _noughtsWinningCombinations = new List<string>()
+            _gameBoard = gameBoard.ToList<char>();
+            _winningCombinations = new List<List<int>>()
             {
-                "_OOO_",
-                "XOOO_",
-                "_OOOX",
-                "XOOO"
-            };
-            _crossesWinningCombinations = new List<string>()
-            {
-                "_XXX_",
-                "OXXX_",
-                "_XXXO",
-                "OXXX"
-            };
+                // across i++
+                new List<int>()
+                { 0, 1, 2 },
+                new List<int>()
+                { 3, 4, 5 },
+                new List<int>()
+                { 6, 7, 8 },
+
+                // diagonal i+4
+                new List<int>()
+                { 0, 4, 8 },
+                new List<int>()
+                { 2, 4, 6 },
+
+                // down i+3
+                new List<int>()
+                { 0, 3, 6 },
+                new List<int>()
+                { 1, 4, 7 },
+                new List<int>()
+                { 2, 5, 8 },
+            };            
         }
 
-        public int CheckForAWinner()
+        public int CheckForAWinner(char playerPiece)
         {
             // initialise this to nobody's won yet because we don't know who's won yet
             var verdict = 3;
+            var hasWon = false;
+            var boxIndicesContainingThisPiece = new List<int>();
 
-            foreach (var combination in _noughtsWinningCombinations)
+            for (int i = 0; i < _gameBoard.Count(); i++)
+            {
+                if (_gameBoard[i].Equals(playerPiece))
+                {
+                    boxIndicesContainingThisPiece.Add(i);
+                }
+            }
+
+            foreach (var combination in _winningCombinations)
+            {
+                hasWon = combination.Except(boxIndicesContainingThisPiece).Equals(0);
+            }
+
+            foreach (var combination in _winningCombinations)
             {
                 if (_gameBoard.Contains(combination))
                 {
@@ -51,6 +76,11 @@ namespace NoughtsAndCrosses.Utilities
             }
 
             return verdict;            
+        }
+
+        public int DecideWhoHasWon()
+        {
+
         }
 
         public bool IsADraw() => _gameBoard.Contains("XXX") && _gameBoard.Contains("OOO");
