@@ -45,8 +45,6 @@ namespace NoughtsAndCrosses
             {
                 Console.WriteLine(GetStateOfBoard(args[i]));
             }
-
-            //GetStateOfBoard("XXXOO____");
         }
 
     }

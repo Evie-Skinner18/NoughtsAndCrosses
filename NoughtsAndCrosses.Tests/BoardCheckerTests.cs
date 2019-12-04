@@ -20,7 +20,7 @@ namespace Tests
         }
 
         [Test]
-        public void CanCheckIfNoughtsHaveWon_ShouldReturnFalse()
+        public void CanCheckIfNoughtsHaveWon_ShouldReturn_False()
         {
             var verdict = _noWinnerBoardChecker.HasWon('O');
 
@@ -29,7 +29,7 @@ namespace Tests
         }
 
         [Test]
-        public void CanCheckIfNoughtsHaveWon_ShouldReturnTrue()
+        public void CanCheckIfNoughtsHaveWon_ShouldReturn_True()
         {
             var verdict = _noughtsWinnerBoardChecker.HasWon('O');
 
@@ -38,7 +38,7 @@ namespace Tests
         }
 
         [Test]
-        public void CanCheckIfCrossesHaveWon_ShouldReturnFalse()
+        public void CanCheckIfCrossesHaveWon_ShouldReturn_False()
         {
             var verdict = _noughtsWinnerBoardChecker.HasWon('X');
 
@@ -47,7 +47,7 @@ namespace Tests
         }
 
         [Test]
-        public void CanCheckIfCrossesHaveWon_ShouldReturnTrue()
+        public void CanCheckIfCrossesHaveWon_ShouldReturn_True()
         {
             var verdict = _crossesWinnerBoardChecker.HasWon('X');
 
@@ -56,7 +56,7 @@ namespace Tests
         }
 
         [Test]
-        public void CanCheckIfCrossesHaveWonOnADrawBoard_ShouldReturnFalse()
+        public void CanCheckIfCrossesHaveWonOnADrawBoard_ShouldReturn_False()
         {
             var verdict = _drawBoardChecker.HasWon('X');
 
@@ -67,7 +67,6 @@ namespace Tests
         [Test]
         public void CanCheckForAWinner_ShouldReturn_Nobody()
         {
-            // 3 = nobody has won yet
             var verdict = _noWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
@@ -77,7 +76,6 @@ namespace Tests
         [Test]
         public void CanCheckForAWinner_ShouldReturn_Noughts()
         {
-            // 0 = noughts have won
             var verdict = _noughtsWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
@@ -87,7 +85,6 @@ namespace Tests
         [Test]
         public void CanCheckForAWinner_ShouldReturn_Crosses()
         {
-            // 1 = crosses have won
             var verdict = _crossesWinnerBoardChecker.CheckForAWinner();
 
             Assert.That(verdict, Is.Not.Null);
@@ -97,19 +94,28 @@ namespace Tests
         [Test]
         public void CanGetIndexOfWinner_ShouldReturn_0()
         {
+            var winnerIndex = _noughtsWinnerBoardChecker.GetIndexOfWinner("Noughts");
 
+            Assert.That(winnerIndex, Is.Not.Null);
+            Assert.AreEqual(winnerIndex, 0);
         }
 
         [Test]
         public void CanGetIndexOfWinner_ShouldReturn_1()
         {
+            var winnerIndex = _noughtsWinnerBoardChecker.GetIndexOfWinner("Crosses");
 
+            Assert.That(winnerIndex, Is.Not.Null);
+            Assert.AreEqual(winnerIndex, 1);
         }
 
         [Test]
         public void CanGetIndexOfWinner_ShouldReturn_3()
         {
+            var winnerIndex = _noughtsWinnerBoardChecker.GetIndexOfWinner("Nobody");
 
+            Assert.That(winnerIndex, Is.Not.Null);
+            Assert.AreEqual(winnerIndex, 3);
         }
 
         [Test]

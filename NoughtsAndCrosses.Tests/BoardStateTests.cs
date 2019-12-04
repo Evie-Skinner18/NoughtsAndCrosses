@@ -16,7 +16,6 @@ namespace Tests
             var validator = new Validator(userBoard);
             var validationBoardStateIndex = validator.ValidateUserInput();
 
-            // if board is valid, then we can check for draw, wins etc
             if (validationBoardStateIndex.Equals(5))
             {
                 if (boardChecker.IsADraw())
