@@ -13,7 +13,7 @@ namespace NoughtsAndCrosses.Utilities
 
         public int ValidateUserInput()
         {
-            // 5 valid board and 4 for valid
+            // 5 valid board and 4 for INvalid
             return (IsCorrectLength() && _userInput.StartsWith("X") && !(InputHasInvalidCharacters())) ? 5 : 4;
         }
 
