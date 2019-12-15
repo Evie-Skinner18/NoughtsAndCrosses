@@ -17,3 +17,5 @@ separate, publicly-accessible class.
 - Come up with a more clever and concise way of checking for a winner. I have noticed a pattern in the indices of the winning 
 combinations so it would probably involve using this pattern.
 - Work out why .Net Core 3 didn't work. Ideally I want to use the most up-to-date version!
+- Make the constructor of BoardChecker less cluttered. Currently I am creating a new list of all the winning combinations inside this ctor. Not sure if this is best practice.
+- Make the HasWon() method in BoardChecker more concise: currently it is twenty-two lines long.
